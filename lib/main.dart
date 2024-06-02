@@ -1,63 +1,21 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'home_screen.dart';
 
-void main(){
-  runApp(const home());
+void main() {
+  runApp(MyApp());
 }
 
-class home extends StatelessWidget {
-  const home({super.key});
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-     home : _DashboardState(),
-     title: 'Photo Management app',
-     
-    );
-  }
-}
-class _DashboardState extends StatefulWidget {
-  const _DashboardState({super.key});
-
-  @override
-  State<_DashboardState> createState() => __DashboardStateState();
-}
-
-class __DashboardStateState extends State<_DashboardState> {
-  int _bottomNavIndex = 0;
-  void _onItemTapped (int index){
-    setState(() {
-      _bottomNavIndex = index;
-    });
-    
-  }
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      
-      bottomNavigationBar:AnimatedBottomNavigationBar(
-        activeIndex: _bottomNavIndex,
-        icons: [Icons.home_mini_outlined,Icons.favorite],
-      backgroundColor: Colors.black,
-      elevation: 10,
-      height:80,
-      iconSize: 30,
-      activeColor: Colors.white,
-      inactiveColor: Colors.white24,
-      gapLocation: GapLocation.center,
-      notchSmoothness: NotchSmoothness.softEdge,
-      leftCornerRadius: 32,
-      rightCornerRadius: 32,
-      onTap: (index)=> setState(()=>_bottomNavIndex= index)) ,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(onPressed: () => {},
-      backgroundColor: Colors.black,
-      child:Icon(Icons.add, color: Colors.white, size:25)
+      title: 'Photo Management App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      
-
+      home: HomeScreen(),
     );
   }
 }
